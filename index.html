@@ -1,591 +1,900 @@
-<!doctype html>
+<!DOCTYPE html>
 <html lang="pt-BR">
-<head>
-  <meta charset="utf-8" />
-  <meta name="viewport" content="width=device-width,initial-scale=1" />
-  <title>Livro — Memórias do Ace</title>
-  <link rel="stylesheet" href="styles.css">
-  <style>
-    /* ============================= */
-    /*            FUNDO              */
-    /* ============================= */
-    .bg-loop { position: fixed; inset:0; overflow:hidden; z-index:0; }
+  <head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width,initial-scale=1" />
+    <title>Livro — Memórias do Ace</title>
+    <link rel="stylesheet" href="styles.css?v=1.0" />
+    <style>
+      /* ============================= */
+      /*            FUNDO              */
+      /* ============================= */
+      .bg-loop {
+        position: fixed;
+        inset: 0;
+        overflow: hidden;
+        z-index: 0;
+      }
 
-    .bg-layer {
-      position: absolute;
-      width: 100%;
-      height: 100%;
-      background: url('fndomori.png') center top / cover no-repeat;
-      filter: brightness(0.85) contrast(1.1) saturate(0.8);
-      animation: scrollBg 15s linear infinite;
-    }
+      .bg-layer {
+        position: absolute;
+        width: 100%;
+        height: 100%;
+        background: url("fndomori.png") center top / cover no-repeat;
+        filter: brightness(0.85) contrast(1.1) saturate(0.8);
+        animation: scrollBg 15s linear infinite;
+      }
 
-    .bg-layer:nth-child(2){ top:-100%; }
+      .bg-layer:nth-child(2) {
+        top: -100%;
+      }
 
-    @keyframes scrollBg { 0% { transform: translateY(0); } 100% { transform: translateY(100%); } }
+      @keyframes scrollBg {
+        0% {
+          transform: translateY(0);
+        }
+        100% {
+          transform: translateY(100%);
+        }
+      }
 
-    .bg-overlay {
-      position: absolute;
-      inset:0;
-      background: linear-gradient(to bottom, rgba(20, 10, 30, 0.11), rgba(40,20,50,0.6));
-      pointer-events: none;
-      z-index:1;
-    }
+      .bg-overlay {
+        position: absolute;
+        inset: 0;
+        background: linear-gradient(
+          to bottom,
+          rgba(20, 10, 30, 0.11),
+          rgba(40, 20, 50, 0.6)
+        );
+        pointer-events: none;
+        z-index: 1;
+      }
 
-    .bg-glow {
-      position: absolute;
-      inset:0;
-      background: radial-gradient(circle, rgba(255,255,255,0.05) 0%, transparent 80%);
-      animation: glowPulse 6s ease-in-out infinite alternate;
-      z-index: 1;
-      pointer-events: none;
-    }
+      .bg-glow {
+        position: absolute;
+        inset: 0;
+        background: radial-gradient(
+          circle,
+          rgba(255, 255, 255, 0.05) 0%,
+          transparent 80%
+        );
+        animation: glowPulse 6s ease-in-out infinite alternate;
+        z-index: 1;
+        pointer-events: none;
+      }
 
-    @keyframes glowPulse {
-      0% { opacity:0.05; }
-      100% { opacity:0.15; }
-    }
+      @keyframes glowPulse {
+        0% {
+          opacity: 0.05;
+        }
+        100% {
+          opacity: 0.15;
+        }
+      }
 
-    .bg-particles {
-      position: absolute;
-      inset:0;
-      pointer-events: none;
-      z-index: 1;
-    }
+      .bg-particles {
+        position: absolute;
+        inset: 0;
+        pointer-events: none;
+        z-index: 1;
+      }
 
-    .particle {
-      position: absolute;
-      width: 2px;
-      height: 2px;
-      background: rgba(255,255,255,0.15);
-      border-radius: 50%;
-      animation: float 20s linear infinite;
-    }
+      .particle {
+        position: absolute;
+        width: 2px;
+        height: 2px;
+        background: rgba(255, 255, 255, 0.15);
+        border-radius: 50%;
+        animation: float 20s linear infinite;
+      }
 
-    @keyframes float {
-      0% { transform: translateY(100vh) translateX(0); opacity:0; }
-      50% { opacity:1; }
-      100% { transform: translateY(-10vh) translateX(50vw); opacity:0; }
-    }
+      @keyframes float {
+        0% {
+          transform: translateY(100vh) translateX(0);
+          opacity: 0;
+        }
+        50% {
+          opacity: 1;
+        }
+        100% {
+          transform: translateY(-10vh) translateX(50vw);
+          opacity: 0;
+        }
+      }
 
-    /* ============================= */
-    /*            MIST CSS           */
-    /* ============================= */
-    .bg-mist {
-      position: absolute;
-      inset: 0;
-      pointer-events: none;
-      z-index: 1;
-      background: radial-gradient(circle, rgba(255,255,255,0.03) 0%, rgba(255,255,255,0) 70%),
-                  radial-gradient(circle, rgba(200,200,255,0.02) 0%, rgba(255,255,255,0) 60%);
-      background-size: 200% 200%;
-      animation: driftMist 120s linear infinite;
-    }
+      /* ============================= */
+      /*            MIST CSS           */
+      /* ============================= */
+      .bg-mist {
+        position: absolute;
+        inset: 0;
+        pointer-events: none;
+        z-index: 1;
+        background: radial-gradient(
+            circle,
+            rgba(255, 255, 255, 0.03) 0%,
+            rgba(255, 255, 255, 0) 70%
+          ),
+          radial-gradient(
+            circle,
+            rgba(200, 200, 255, 0.02) 0%,
+            rgba(255, 255, 255, 0) 60%
+          );
+        background-size: 200% 200%;
+        animation: driftMist 120s linear infinite;
+      }
 
-    @keyframes driftMist {
-      0% { background-position: 0% 0%, 100% 100%; }
-      50% { background-position: 50% 50%, 50% 50%; }
-      100% { background-position: 100% 0%, 0% 100%; }
-    }
+      @keyframes driftMist {
+        0% {
+          background-position: 0% 0%, 100% 100%;
+        }
+        50% {
+          background-position: 50% 50%, 50% 50%;
+        }
+        100% {
+          background-position: 100% 0%, 0% 100%;
+        }
+      }
 
-    body::before {
-      content:"";
-      position: fixed;
-      inset:0;
-      pointer-events:none;
-      background: radial-gradient(rgba(255,255,255,0.02) 1px, transparent 1px);
-      background-size: 4px 4px;
-      z-index:0;
-    }
-  </style>
-</head>
-<body>
-
-<div class="pinwheel-container-ace">
-  <svg class="pinwheel-svg-ace" viewBox="-80 -80 260 360">
-    <rect x="96" y="100" width="8" height="230" rx="4" class="pin-haste" />
-    <g class="pinwheel-rotate-ace">
-      <g transform="translate(100,100)">
-        <path class="blade b1" d="M0,-8 C40,-8 80,8 90,44 C80,80 40,112 0,112 C-10,78 12,32 0,-8Z" />
-        <path class="blade b2" d="M0,-8 C40,-8 80,8 90,44 C80,80 40,112 0,112 C-10,78 12,32 0,-8Z" transform="rotate(90)" />
-        <path class="blade b3" d="M0,-8 C40,-8 80,8 90,44 C80,80 40,112 0,112 C-10,78 12,32 0,-8Z" transform="rotate(180)" />
-        <path class="blade b4" d="M0,-8 C40,-8 80,8 90,44 C80,80 40,112 0,112 C-10,78 12,32 0,-8Z" transform="rotate(270)" />
-        <circle cx="0" cy="0" r="14" class="hub-ring-ace" />
-        <circle cx="0" cy="0" r="7" class="hub-core-ace" />
-      </g>
-    </g>
-  </svg>
-</div>
-
-<div class="pinwheel-container-brun">
-  <svg class="pinwheel-svg-brun" viewBox="-80 -80 260 360">
-    <rect x="96" y="100" width="8" height="230" rx="4" class="pin-haste" />
-    <g class="pinwheel-rotate-brun">
-      <g transform="translate(100,100)">
-        <path class="blade-red b1red" d="M0,-8 C40,-8 80,8 90,44 C80,80 40,112 0,112 C-10,78 12,32 0,-8Z" />
-        <path class="blade-red b2red" d="M0,-8 C40,-8 80,8 90,44 C80,80 40,112 0,112 C-10,78 12,32 0,-8Z" transform="rotate(90)" />
-        <path class="blade-red b3red" d="M0,-8 C40,-8 80,8 90,44 C80,80 40,112 0,112 C-10,78 12,32 0,-8Z" transform="rotate(180)" />
-        <path class="blade-red b4red" d="M0,-8 C40,-8 80,8 90,44 C80,80 40,112 0,112 C-10,78 12,32 0,-8Z" transform="rotate(270)" />
-        <circle cx="0" cy="0" r="14" class="hub-ring-brun" />
-        <circle cx="0" cy="0" r="7" class="hub-core-brun" />
-      </g>
-    </g>
-  </svg>
-</div>
-
-<div class="pinwheel-container-berg">
-  <svg class="pinwheel-svg-berg" viewBox="-80 -80 260 360">
-    <rect x="96" y="100" width="8" height="230" rx="4" class="pin-haste" />
-    <g class="pinwheel-rotate-berg">
-      <g transform="translate(100,100)">
-        <path class="blade-black b1black" d="M0,-8 C40,-8 80,8 90,44 C80,80 40,112 0,112 C-10,78 12,32 0,-8Z" />
-        <path class="blade-black b2black" d="M0,-8 C40,-8 80,8 90,44 C80,80 40,112 0,112 C-10,78 12,32 0,-8Z" transform="rotate(90)" />
-        <path class="blade-black b3black" d="M0,-8 C40,-8 80,8 90,44 C80,80 40,112 0,112 C-10,78 12,32 0,-8Z" transform="rotate(180)" />
-        <path class="blade-black b4black" d="M0,-8 C40,-8 80,8 90,44 C80,80 40,112 0,112 C-10,78 12,32 0,-8Z" transform="rotate(270)" />
-        <circle cx="0" cy="0" r="14" class="hub-ring-berg" />
-        <circle cx="0" cy="0" r="7" class="hub-core-berg" />
-      </g>
-    </g>
-  </svg>
-</div>
-
-<audio id="bgm" src="omori.mp3" loop></audio>
-
-<div class="bg-loop">
-  <div class="bg-layer"></div>
-  <div class="bg-layer"></div>
-  <div class="bg-overlay"></div>
-  <div class="bg-mist"></div>
-  <div class="bg-glow"></div>
-  <div class="bg-particles"></div>
-</div>
-
-<div class="scene">
-
-  <!-- GRAMA -->
-  <div class="grass-area" aria-hidden="true">
-    <svg id="grassSVG" viewBox="0 0 1600 500" preserveAspectRatio="none">
-      <path id="grassPath" fill="url(#grassGradient)" stroke="none"></path>
-      <defs>
-        <linearGradient id="grassGradient" x1="0" y1="0" x2="0" y2="1">
-          <stop offset="0%" stop-color="#c8ffe7"/>
-          <stop offset="40%" stop-color="#78d69f"/>
-          <stop offset="100%" stop-color="#327a42"/>
-        </linearGradient>
-      </defs>
-    </svg>
-  </div>
-
-  <!-- FOTOS COM LEGENDAS ESTILO OMORI -->
-  <div class="portrait-container" id="portrait2" style="top: 280px; left: 400px;">
-    <div class="tape-realista"></div>
-    <div class="photo-support"></div>
-    <div class="photo-wrapper">
-      <div class="photo-square">
-        <img src="nostalgia2.png" alt="Memória 2">
-      </div>
-      <div class="wrap-black">
-        <div class="caption-box">
-          Eu tenho saudade dos dias em que tentávamos jogar Minecraft de todo jeito, sempre sonhando com o dia em que poderíamos ser crianças de novo.
-        </div>
-      </div>
+      body::before {
+        content: "";
+        position: fixed;
+        inset: 0;
+        pointer-events: none;
+        background: radial-gradient(
+          rgba(255, 255, 255, 0.02) 1px,
+          transparent 1px
+        );
+        background-size: 4px 4px;
+        z-index: 0;
+      }
+    </style>
+  </head>
+  <body>
+    <div class="pinwheel-container-ace">
+      <svg class="pinwheel-svg-ace" viewBox="-80 -80 260 360">
+        <rect x="96" y="100" width="8" height="230" rx="4" class="pin-haste" />
+        <g class="pinwheel-rotate-ace">
+          <g transform="translate(100,100)">
+            <path
+              class="blade b1"
+              d="M0,-8 C40,-8 80,8 90,44 C80,80 40,112 0,112 C-10,78 12,32 0,-8Z"
+            />
+            <path
+              class="blade b2"
+              d="M0,-8 C40,-8 80,8 90,44 C80,80 40,112 0,112 C-10,78 12,32 0,-8Z"
+              transform="rotate(90)"
+            />
+            <path
+              class="blade b3"
+              d="M0,-8 C40,-8 80,8 90,44 C80,80 40,112 0,112 C-10,78 12,32 0,-8Z"
+              transform="rotate(180)"
+            />
+            <path
+              class="blade b4"
+              d="M0,-8 C40,-8 80,8 90,44 C80,80 40,112 0,112 C-10,78 12,32 0,-8Z"
+              transform="rotate(270)"
+            />
+            <circle cx="0" cy="0" r="14" class="hub-ring-ace" />
+            <circle cx="0" cy="0" r="7" class="hub-core-ace" />
+          </g>
+        </g>
+      </svg>
     </div>
-  </div>
 
-  <div class="portrait-container" id="portrait1">
-    <div class="tape-realista"></div>
-    <div class="photo-support"></div>
-    <div class="photo-wrapper">
-      <div class="photo-square">
-        <img src="nostalgia1.jpg" alt="Memória">
-      </div>
-      <div class="wrap-black">
-        <div class="caption-box">
-          Às vezes lembro daquele túmulo que eu fiz nosso no servidor do Pixelmon… Me pergunto se a placa ainda está lá, ainda marcando nossa passagem mesmo após todo esse tempo.
-        </div>
-      </div>
+    <div class="pinwheel-container-brun">
+      <svg class="pinwheel-svg-brun" viewBox="-80 -80 260 360">
+        <rect x="96" y="100" width="8" height="230" rx="4" class="pin-haste" />
+        <g class="pinwheel-rotate-brun">
+          <g transform="translate(100,100)">
+            <path
+              class="blade-red b1red"
+              d="M0,-8 C40,-8 80,8 90,44 C80,80 40,112 0,112 C-10,78 12,32 0,-8Z"
+            />
+            <path
+              class="blade-red b2red"
+              d="M0,-8 C40,-8 80,8 90,44 C80,80 40,112 0,112 C-10,78 12,32 0,-8Z"
+              transform="rotate(90)"
+            />
+            <path
+              class="blade-red b3red"
+              d="M0,-8 C40,-8 80,8 90,44 C80,80 40,112 0,112 C-10,78 12,32 0,-8Z"
+              transform="rotate(180)"
+            />
+            <path
+              class="blade-red b4red"
+              d="M0,-8 C40,-8 80,8 90,44 C80,80 40,112 0,112 C-10,78 12,32 0,-8Z"
+              transform="rotate(270)"
+            />
+            <circle cx="0" cy="0" r="14" class="hub-ring-brun" />
+            <circle cx="0" cy="0" r="7" class="hub-core-brun" />
+          </g>
+        </g>
+      </svg>
     </div>
-  </div>
 
-  <!-- LIVRO -->
-  <main class="book-wrap" id="bookWrap" style="top: 140px;">
-    <div class="book" id="book" tabindex="0" aria-label="Livro de memórias">
+    <div class="pinwheel-container-berg">
+      <svg class="pinwheel-svg-berg" viewBox="-80 -80 260 360">
+        <rect x="96" y="100" width="8" height="230" rx="4" class="pin-haste" />
+        <g class="pinwheel-rotate-berg">
+          <g transform="translate(100,100)">
+            <path
+              class="blade-black b1black"
+              d="M0,-8 C40,-8 80,8 90,44 C80,80 40,112 0,112 C-10,78 12,32 0,-8Z"
+            />
+            <path
+              class="blade-black b2black"
+              d="M0,-8 C40,-8 80,8 90,44 C80,80 40,112 0,112 C-10,78 12,32 0,-8Z"
+              transform="rotate(90)"
+            />
+            <path
+              class="blade-black b3black"
+              d="M0,-8 C40,-8 80,8 90,44 C80,80 40,112 0,112 C-10,78 12,32 0,-8Z"
+              transform="rotate(180)"
+            />
+            <path
+              class="blade-black b4black"
+              d="M0,-8 C40,-8 80,8 90,44 C80,80 40,112 0,112 C-10,78 12,32 0,-8Z"
+              transform="rotate(270)"
+            />
+            <circle cx="0" cy="0" r="14" class="hub-ring-berg" />
+            <circle cx="0" cy="0" r="7" class="hub-core-berg" />
+          </g>
+        </g>
+      </svg>
+    </div>
 
-      <!-- BIG CAT -->
-      <div class="bigcat">
-        <div class="cat-ear left-ear" aria-hidden="true"></div>
-        <div class="cat-ear right-ear" aria-hidden="true"></div>
-        <div class="cat-arms"></div>
+    <audio id="bgm" src="omori.mp3" loop></audio>
+
+    <div class="bg-loop">
+      <div class="bg-layer"></div>
+      <div class="bg-layer"></div>
+      <div class="bg-overlay"></div>
+      <div class="bg-mist"></div>
+      <div class="bg-glow"></div>
+      <div class="bg-particles"></div>
+    </div>
+
+    <div class="scene">
+      <!-- GRAMA -->
+      <div class="grass-area" aria-hidden="true">
+        <svg id="grassSVG" viewBox="0 0 1600 500" preserveAspectRatio="none">
+          <path id="grassPath" fill="url(#grassGradient)" stroke="none"></path>
+          <defs>
+            <linearGradient id="grassGradient" x1="0" y1="0" x2="0" y2="1">
+              <stop offset="0%" stop-color="#c8ffe7" />
+              <stop offset="40%" stop-color="#78d69f" />
+              <stop offset="100%" stop-color="#327a42" />
+            </linearGradient>
+          </defs>
+        </svg>
       </div>
 
-      <div class="book-spine"></div>
-
-      <!-- CAPA FRENTE -->
-      <div class="cover front">
-        <div class="front-title-wrap">
-          <div class="title-top-row">
-            <div class="gold-plate">
-              <span class="gold-plate-text">AKINO</span>
-            </div>
-            <span class="small-s">’S</span>
+      <div
+        class="portrait-container"
+        id="portrait2"
+        style="top: 280px; left: 400px"
+      >
+        <div class="tape-realista"></div>
+        <div class="photo-support"></div>
+        <div class="photo-wrapper">
+          <div class="photo-square">
+            <img src="nostalgia2.png" alt="Memória 2" />
           </div>
-          <div class="album-subtitle">MEMORIES</div>
+          <div class="wrap-black">
+            <div class="caption-box">
+              Eu tenho saudade dos dias em que tentávamos jogar Minecraft de
+              todo jeito, sempre sonhando com o dia em que poderíamos ser
+              crianças de novo.
+            </div>
+          </div>
         </div>
       </div>
 
-<!-- ========================= -->
-<!--     PÁGINA 1 / 2          -->
-<!-- ========================= -->
-<div class="page">
-  <div class="page-front">
-    <div class="page-layout">
-
-      <div class="text-block left">
-        <p>Lembra de quando a gente jogou os Back Roooms? Jogávamos nós 3. Eu você e meu irmão. Nós passávamos horas tentando chegar ao fim do jogo. Quando chegamos tiramos essa foto! </p>
-      </div>
-
-      <div class="polaroid top-right">
-        <div class="photo">
-          <img src="nostalgia3.jpg">
+      <div class="portrait-container" id="portrait1">
+        <div class="tape-realista"></div>
+        <div class="photo-support"></div>
+        <div class="photo-wrapper">
+          <div class="photo-square">
+            <img src="nostalgia1.jpg" alt="Memória" />
+          </div>
+          <div class="wrap-black">
+            <div class="caption-box">
+              Às vezes lembro daquele túmulo que eu fiz nosso no servidor do
+              Pixelmon… Me pergunto se a placa ainda está lá, ainda marcando
+              nossa passagem mesmo após todo esse tempo.
+            </div>
+          </div>
         </div>
-        <div class="caption"> </div>
       </div>
 
-      <div class="polaroid bottom-left">
-        <div class="photo">
-          <img src="nostalgia1.png">
+      <!-- LIVRO -->
+      <main class="book-wrap" id="bookWrap" style="top: 140px">
+        <div class="book" id="book" tabindex="0" aria-label="Livro de memórias">
+          <!-- BIG CAT -->
+          <div class="bigcat">
+            <div class="cat-ear left-ear" aria-hidden="true"></div>
+            <div class="cat-ear right-ear" aria-hidden="true"></div>
+            <div class="cat-arms"></div>
+          </div>
+
+          <div class="book-spine"></div>
+
+          <!-- CAPA FRENTE -->
+          <div class="cover front">
+            <div class="cover-front-back"></div>
+
+            <!-- Parte da frente da capa -->
+            <div class="cover-front-front">
+              <div class="front-title-wrap">
+                <div class="title-top-row">
+                  <div class="gold-plate">
+                    <span class="gold-plate-text">AKINO</span>
+                  </div>
+                  <span class="small-s">’S</span>
+                </div>
+                <div class="album-subtitle">MEMORIES</div>
+              </div>
+            </div>
+          </div>
+
+          <div class="page">
+            <div class="page-front">
+              <div class="page-layout">
+                <p class="signature-title">ASSINATURAS</p>
+
+                <div class="signature-lines">
+                  <div class="signature-line" data-label="Assinatura"></div>
+                  <div class="signature-line" data-label="Assinatura"></div>
+                  <div class="signature-line" data-label="Assinatura"></div>
+                  <div class="signature-line" data-label="Assinatura"></div>
+                  <div class="signature-line" data-label="Assinatura"></div>
+                </div>
+              </div>
+            </div>
+            <div class="page-back">
+              <div class="page-layout" id="page-back-layout-inner">
+                <img src="imgs/got.png" class="random-img" />
+                <img src="imgs/hollowknight.png" class="random-img" />
+                <img src="imgs/lis2.png" class="random-img" />
+                <img src="imgs/lisbtsp.png" class="random-img" />
+                <img src="imgs/nightinthewoods.png" class="random-img" />
+                <img src="imgs/omocat.png" class="random-img" />
+                <img src="imgs/ori.png" class="random-img" />
+                <img src="imgs/pfl.png" class="random-img" />
+                <img src="imgs/road96.png" class="random-img" />
+                <img src="imgs/undertalep.png" class="random-img" />
+                <img src="imgs/oneshotp.png" class="random-img" />
+                <img src="imgs/ef.png" class="random-img" />
+              </div>
+            </div>
+          </div>
+
+          <!-- ========================= -->
+          <!--     PÁGINA PRINCIPAL       -->
+          <!-- ========================= -->
+          <div class="page">
+            <div class="page-front">
+              <div class="intro-top-block">
+                <div class="gif-wrapper">
+                  <img
+                    src="ommori.gif"
+                    alt="Imagem Principal"
+                    class="intro-image"
+                  />
+                  <!-- fitas adesivas -->
+                  <div class="tape tape-top-left"></div>
+                  <div class="tape tape-top-right"></div>
+                  <div class="tape tape-bottom-left"></div>
+                  <div class="tape tape-bottom-right"></div>
+                </div>
+
+                <div class="intro-texts-top" id="intro-texts-top">
+                  <p class="text1">Vivemos nas paranóias uns dos outros.</p>
+                  <p class="text2">
+                    Eles olham para mim e veem apenas a máscara.
+                  </p>
+                  <p class="text3">
+                    A realidade é apenas uma sombra que falhou em seu propósito.
+                  </p>
+                  <p class="text4">
+                    Eu espero que um dia você encontre alguma paz...
+                  </p>
+                  <p class="text5">
+                    Fugir não é fraqueza, é a única forma de sobreviver à
+                    própria mente.
+                  </p>
+                </div>
+              </div>
+            </div>
+            <div class="page-back">
+              <div class="page-layout">
+                <div class="memory-center">
+                  <!-- Estrelas -->
+                  <div class="memory-star star-tl"></div>
+                  <div class="memory-star star-tr"></div>
+                  <div class="memory-star star-bl"></div>
+                  <div class="memory-star star-br"></div>
+
+                  <!-- Caixa da foto -->
+                  <div class="memory-photo-box">
+                    <img src="imgs/404.png" class="memory-photo" />
+
+                    <div class="tape tape-memory tape-top-left"></div>
+                    <div class="tape tape-memory tape-top-right"></div>
+                    <div class="tape tape-memory tape-bottom-left"></div>
+                    <div class="tape tape-memory tape-bottom-right"></div>
+                  </div>
+
+                  <p class="memory-text">Reservado para uma memória especial</p>
+                </div>
+              </div>
+            </div>
+          </div>
+
+          <!-- ========================= -->
+          <!--     PÁGINA 1 / 2          -->
+          <!-- ========================= -->
+          <div class="page">
+            <div class="page-front">
+              <div class="page-layout">
+                <div class="text-block left">
+                  <p>
+                    Quando nós terminamos os Back Rooms, eu lembro de ter
+                    atrasado todo mundo para tirar essa foto.
+                  </p>
+                </div>
+
+                <div class="polaroid top-right">
+                  <div class="photo">
+                    <img src="nostalgia3.jpg" />
+                  </div>
+                  <div class="caption"></div>
+                </div>
+
+                <div class="polaroid bottom-left">
+                  <div class="photo">
+                    <img src="nostalgia1.png" />
+                  </div>
+                  <div class="caption"></div>
+                </div>
+
+                <div class="text-block right">
+                  <p>
+                    Finalmente terminei a sala de báus... acho que agora não
+                    passaremos mais tanto tempo tentando achar nossos itens.
+                  </p>
+                </div>
+              </div>
+            </div>
+
+            <div class="page-back">
+              <div class="page-layout">
+                <div class="text-block left">
+                  <p>
+                    Conseguimos matar três monstros no R.E.P.O. Uma pena que um
+                    segundo depois nós quebramos duas das orbes...
+                  </p>
+                </div>
+
+                <div class="polaroid top-right">
+                  <div class="photo">
+                    <img src="imgs/rrpo.jpg" />
+                  </div>
+                  <div class="caption"></div>
+                </div>
+
+                <div class="polaroid bottom-left">
+                  <div class="photo">
+                    <img src="imgs/end.jpg" />
+                  </div>
+                  <div class="caption"></div>
+                </div>
+
+                <div class="text-block right">
+                  <p>
+                    Um momento de tranquilidade antes do portal começar a ser
+                    sugado pelo o buraco negro. Pobre golfinho.
+                  </p>
+                </div>
+              </div>
+            </div>
+          </div>
+
+          <!-- ========================= -->
+          <!--     PÁGINA 3 / 4          -->
+          <!-- ========================= -->
+          <div class="page">
+            <div class="page-front">
+              <div class="page-layout">
+                <div class="text-block left">
+                  <p>
+                    Consegui consertar o portal nos nossos últimos susurros. Eu
+                    me recusava a deixar você o consertar.
+                  </p>
+                </div>
+
+                <div class="polaroid top-right">
+                  <div class="photo">
+                    <img src="imgs/lvsnet.jpg" />
+                  </div>
+                  <div class="caption"></div>
+                </div>
+
+                <div class="polaroid bottom-left">
+                  <div class="photo">
+                    <img src="imgs/teatro.jpg" />
+                  </div>
+                  <div class="caption"></div>
+                </div>
+
+                <div class="text-block right">
+                  <p>
+                    Pobres princesas, o que faziam acordadas às 5 da manhã em
+                    plena terça-feira? Me desculpe pela traição.
+                  </p>
+                </div>
+              </div>
+            </div>
+
+            <div class="page-back">
+              <div class="page-layout">
+                <div class="text-block left">
+                  <p>
+                    Dessa vez vamos conseguir... é só você não cair. Depois
+                    disso eu nunca mais ousei deixar você com uma bola de fogo.
+                  </p>
+                </div>
+
+                <div class="polaroid top-right">
+                  <div class="photo">
+                    <img src="imgs/bed.jpg" />
+                  </div>
+                  <div class="caption"></div>
+                </div>
+
+                <div class="polaroid bottom-left">
+                  <div class="photo">
+                    <img src="imgs/skgj.jpg" />
+                  </div>
+                  <div class="caption"></div>
+                </div>
+
+                <div class="text-block right">
+                  <p>
+                    Passamos horas nós xingando em um joguinho de luta qualquer
+                    no Roblox. Eu sentia uma agonia profunda toda vez que era
+                    derrotado especificamente por você.
+                  </p>
+                </div>
+              </div>
+            </div>
+          </div>
+
+          <!-- ========================= -->
+          <!--     PÁGINA 5 / 6          -->
+          <!-- ========================= -->
+          <div class="page">
+            <div class="page-front">
+              <div class="page-layout">
+                <div class="text-block left">
+                  <p>
+                    Nossas almas foram transferidas para patos. Foi engraçado
+                    ver meu irmão encarando nossos olhos já vazios.
+                  </p>
+                </div>
+
+                <div class="polaroid top-right">
+                  <div class="photo">
+                    <img src="imgs/quack.jpg" />
+                  </div>
+                  <div class="caption"></div>
+                </div>
+
+                <div class="polaroid bottom-left">
+                  <div class="photo">
+                    <img src="imgs/fr.jpg" />
+                  </div>
+                  <div class="caption"></div>
+                </div>
+
+                <div class="text-block right">
+                  <p>
+                    Tentamos tirar foto com nosso amigo Freddy. Uma pena que
+                    você simplesmente se recusava a deixar eu ficar no meio.
+                  </p>
+                </div>
+              </div>
+            </div>
+
+            <div class="page-back">
+              <div class="page-layout">
+                <div class="text-block left">
+                  <p>
+                    Passamos horas construindo um carro que sonhavamos em ser
+                    útopico. O carro não se movia um centímetro do chão.
+                  </p>
+                </div>
+
+                <div class="polaroid top-right">
+                  <div class="photo">
+                    <img src="imgs/carropika.jpg" />
+                  </div>
+                  <div class="caption"></div>
+                </div>
+
+                <div class="polaroid bottom-left">
+                  <div class="photo">
+                    <img src="imgs/bk.png" />
+                  </div>
+                  <div class="caption"></div>
+                </div>
+
+                <div class="text-block right">
+                  <p>
+                    Finalmente voltamos ao jogo. Ficamos duas horas plantados
+                    esperando um amigo nosso entrar.
+                  </p>
+                </div>
+              </div>
+            </div>
+          </div>
+
+          <!-- ========================= -->
+          <!--     PÁGINA 7 / 8          -->
+          <!-- ========================= -->
+          <div class="page">
+            <div class="page-front">
+              <div class="page-layout">
+                <div class="text-block left">
+                  <p>
+                    Tinhamos uma ideia. Ela só não foi muito bem executada. F PC
+                    2025
+                  </p>
+                </div>
+
+                <div class="polaroid top-right">
+                  <div class="photo">
+                    <img src="imgs/experimentosocial.png" />
+                  </div>
+                  <div class="caption"></div>
+                </div>
+
+                <div class="polaroid bottom-left">
+                  <div class="photo">
+                    <img src="imgs/yt.png" />
+                  </div>
+                  <div class="caption"></div>
+                </div>
+
+                <div class="text-block right">
+                  <p>
+                    Agora somos criadores de conteúdo, como sempre sonhavamos em
+                    ser. Só não é do jeito que a gente esperava.
+                  </p>
+                </div>
+              </div>
+            </div>
+
+            <div class="page-back">
+              <div class="page-layout">
+                <div class="text-block left">
+                  <p>
+                    16/03/25 -- Quatro anos depois, onde nós falamos pela
+                    primeira vez. Acho que esse lugar nunca vai sair de mim.
+                  </p>
+                </div>
+
+                <div class="polaroid top-right">
+                  <div class="photo">
+                    <img src="imgs/RobloxScreenShot20250316_211608633.png" />
+                  </div>
+                  <div class="caption"></div>
+                </div>
+
+                <div class="polaroid bottom-left">
+                  <div class="photo">
+                    <img src="imgs/mh.jpg" />
+                  </div>
+                  <div class="caption"></div>
+                </div>
+
+                <div class="text-block right">
+                  <p>
+                    A gente finalmente voltou no Minecraft. Uma pena que o tempo
+                    passou rápido demais naquela época. Eu queria ter tirado
+                    mais fotos nossas.
+                  </p>
+                </div>
+              </div>
+            </div>
+          </div>
+
+          <!-- ========================= -->
+          <!--     PÁGINA 9 / 10         -->
+          <!-- ========================= -->
+          <div class="page">
+            <div class="page-front">
+              <div class="page-layout">
+                <div class="text-block left">
+                  <p>
+                    Jogamos o modo Zombies do Hypixel. Foi a primeira vez que a
+                    gente zerou esse modo junto. Pobre anajuzl...
+                  </p>
+                </div>
+
+                <div class="polaroid top-right">
+                  <div class="photo">
+                    <img src="imgs/zomb.jpg" />
+                  </div>
+                  <div class="caption"></div>
+                </div>
+
+                <div class="polaroid bottom-left">
+                  <div class="photo">
+                    <img src="imgs/rblx.jpg" />
+                  </div>
+                  <div class="caption"></div>
+                </div>
+
+                <div class="text-block right">
+                  <p>
+                    Jogavamos por todo o dia, não importava o que houvesse.
+                    Parecia tudo mais leve naquele tempo...
+                  </p>
+                </div>
+              </div>
+            </div>
+
+            <div class="page-back">
+              <div class="page-layout">
+                <div class="text-block left">
+                  <p>
+                    Morremos por sorte. O jogo sabia que iriamos até o round
+                    100.
+                  </p>
+                </div>
+
+                <div class="polaroid top-right">
+                  <div class="photo">
+                    <img src="imgs/bo2.jpg" />
+                  </div>
+                  <div class="caption"></div>
+                </div>
+
+                <div class="polaroid bottom-left">
+                  <div class="photo">
+                    <img src="imgs/tranzit.png" />
+                  </div>
+                  <div class="caption"></div>
+                </div>
+
+                <div class="text-block right">
+                  <p>
+                    Sempre tivemos medo desse lugar. A boca do inferno que
+                    sempre roubava o brilho de nossos olhos.
+                  </p>
+                </div>
+              </div>
+            </div>
+          </div>
+
+          <!-- ========================= -->
+          <!--     PÁGINA 11 / 12          -->
+          <!-- ========================= -->
+          <div class="page">
+            <div class="page-front">
+              <div class="page-layout">
+                <div class="text-block left">
+                  <p>
+                    Nosso maior nemesis. O infâme Breno Baumann, aquele que
+                    destruiu nossas casas e queimou os nossos filhos. Nossa vida
+                    foi roubada desde então.
+                  </p>
+                </div>
+
+                <div class="polaroid top-right">
+                  <div class="photo">
+                    <img src="imgs/bauman.png" />
+                  </div>
+                  <div class="caption"></div>
+                </div>
+
+                <div class="polaroid bottom-left">
+                  <div class="photo">
+                    <img src="imgs/anime.JPG" />
+                  </div>
+                  <div class="caption"></div>
+                </div>
+
+                <div class="text-block right">
+                  <p>
+                    Você me prometeu que voltaria... Você deu esperança à uma
+                    alma destinada a solidão por toda a eternidade.
+                  </p>
+                </div>
+              </div>
+            </div>
+
+            <div class="page-back">
+              <div class="page-layout">
+                <div class="text-block left">
+                  <p>
+                    A luz do sol refletindo em meus olhos enquanto minha vida
+                    inteira passa diante deles. Jogado e abandonado por um
+                    amigo.
+                  </p>
+                </div>
+
+                <div class="polaroid top-right">
+                  <div class="photo">
+                    <img src="imgs/prisonlife.png" />
+                  </div>
+                  <div class="caption"></div>
+                </div>
+
+                <div class="polaroid bottom-left">
+                  <div class="photo">
+                    <img src="imgs/dntstarve.png" />
+                  </div>
+                  <div class="caption"></div>
+                </div>
+
+                <div class="text-block right">
+                  <p>
+                    A primeira visão que tive de você. Nós tentamos, mas só
+                    tentamos.
+                  </p>
+                </div>
+              </div>
+            </div>
+          </div>
+
+          <div class="cover-spine"></div>
+          <div class="cover back"></div>
+          <div class="thumb-grid" id="thumbGrid" aria-live="polite"></div>
+          <div class="photo-area" id="photoArea"></div>
         </div>
-        <div class="caption"> </div>
-      </div>
-
-      <div class="text-block right">
-        <p>Eu não me esqueço até hoje do nosso mundo survival! Eu passei horas construindo nossa sala de baús! No final não sabíamos nem mais qual báu guardavamos a comida. </p>
-      </div>
-
+      </main>
     </div>
-  </div>
 
-  <div class="page-back">
-    <div class="page-layout">
+    <div class="portal-container">
+      <div class="portal-bg-bleed"></div>
+      <div class="portal-border"></div>
+      <img class="portal-image" src="realworld.png" alt="Portal interior" />
 
-      <div class="text-block left">
-        <p>caguei duro</p>
-      </div>
-
-      <div class="polaroid top-right">
-        <div class="photo">
-          <img src="polaroid2.png">
-        </div>
-        <div class="caption"> </div>
-      </div>
-
-      <div class="polaroid bottom-left">
-        <div class="photo">
-          <img src="polaroid2b.png">
-        </div>
-        <div class="caption"> </div>
-      </div>
-
-      <div class="text-block right">
-        <p>TEXTO 4</p>
-      </div>
-
+      <!-- hit-area -->
+      <svg
+        class="portal-hit"
+        viewBox="0 0 100 100"
+        preserveAspectRatio="none"
+        aria-hidden="true"
+      >
+        <rect x="0" y="0" width="100" height="100" fill="black" opacity="0" />
+      </svg>
     </div>
-  </div>
-</div>
 
-<!-- ========================= -->
-<!--     PÁGINA 3 / 4          -->
-<!-- ========================= -->
-<div class="page">
-  <div class="page-front">
-    <div class="page-layout">
-
-      <div class="text-block left">
-        <p>TEXTO 5</p>
+    <div class="portal-container">
+      <div class="portal-image">
+        <div class="portal-loop"></div>
       </div>
 
-      <div class="polaroid top-right">
-        <div class="photo">
-          <img src="polaroid3.png">
-        </div>
-        <div class="caption"> </div>
-      </div>
+      <div class="portal-inner-border"></div>
 
-      <div class="polaroid bottom-left">
-        <div class="photo">
-          <img src="polaroid3b.png">
-        </div>
-        <div class="caption"> </div>
-      </div>
+      <div class="portal-smoke"></div>
 
-      <div class="text-block right">
-        <p>TEXTO 6</p>
-      </div>
-
+      <div class="portal-border"></div>
+      <div class="portal-glow"></div>
     </div>
-  </div>
+    <div id="overlay"></div>
 
-  <div class="page-back">
-    <div class="page-layout">
+    <script src="script.js?v=1.0"></script>
+  </body>
 
-      <div class="text-block left">
-        <p>TEXTO 7</p>
-      </div>
-
-      <div class="polaroid top-right">
-        <div class="photo">
-          <img src="polaroid4.png">
-        </div>
-        <div class="caption"> </div>
-      </div>
-
-      <div class="polaroid bottom-left">
-        <div class="photo">
-          <img src="polaroid4b.png">
-        </div>
-        <div class="caption"> </div>
-      </div>
-
-      <div class="text-block right">
-        <p>TEXTO 8</p>
-      </div>
-
-    </div>
-  </div>
-</div>
-
-<!-- ========================= -->
-<!--     PÁGINA 5 / 6          -->
-<!-- ========================= -->
-<div class="page">
-  <div class="page-front">
-    <div class="page-layout">
-
-      <div class="text-block left">
-        <p>TEXTO 9</p>
-      </div>
-
-      <div class="polaroid top-right">
-        <div class="photo">
-          <img src="polaroid5.png">
-        </div>
-        <div class="caption"> </div>
-      </div>
-
-      <div class="polaroid bottom-left">
-        <div class="photo">
-          <img src="polaroid5b.png">
-        </div>
-        <div class="caption"> </div>
-      </div>
-
-      <div class="text-block right">
-        <p>TEXTO 10</p>
-      </div>
-
-    </div>
-  </div>
-
-  <div class="page-back">
-    <div class="page-layout">
-
-      <div class="text-block left">
-        <p>TEXTO 11</p>
-      </div>
-
-      <div class="polaroid top-right">
-        <div class="photo">
-          <img src="polaroid6.png">
-        </div>
-        <div class="caption"> </div>
-      </div>
-
-      <div class="polaroid bottom-left">
-        <div class="photo">
-          <img src="polaroid6b.png">
-        </div>
-        <div class="caption"> </div>
-      </div>
-
-      <div class="text-block right">
-        <p>TEXTO 12</p>
-      </div>
-
-    </div>
-  </div>
-</div>
-
-<!-- ========================= -->
-<!--     PÁGINA 7 / 8          -->
-<!-- ========================= -->
-<div class="page">
-  <div class="page-front">
-    <div class="page-layout">
-
-      <div class="text-block left">
-        <p>TEXTO 13</p>
-      </div>
-
-      <div class="polaroid top-right">
-        <div class="photo">
-          <img src="polaroid7.png">
-        </div>
-        <div class="caption"> </div>
-      </div>
-
-      <div class="polaroid bottom-left">
-        <div class="photo">
-          <img src="polaroid7b.png">
-        </div>
-        <div class="caption"> </div>
-      </div>
-
-      <div class="text-block right">
-        <p>TEXTO 14</p>
-      </div>
-
-    </div>
-  </div>
-
-  <div class="page-back">
-    <div class="page-layout">
-
-      <div class="text-block left">
-        <p>TEXTO 15</p>
-      </div>
-
-      <div class="polaroid top-right">
-        <div class="photo">
-          <img src="polaroid8.png">
-        </div>
-        <div class="caption"> </div>
-      </div>
-
-      <div class="polaroid bottom-left">
-        <div class="photo">
-          <img src="polaroid8b.png">
-        </div>
-        <div class="caption"> </div>
-      </div>
-
-      <div class="text-block right">
-        <p>TEXTO 16</p>
-      </div>
-
-    </div>
-  </div>
-</div>
-
-<!-- ========================= -->
-<!--     PÁGINA 9 / 10         -->
-<!-- ========================= -->
-<div class="page">
-  <div class="page-front">
-    <div class="page-layout">
-
-      <div class="text-block left">
-        <p>TEXTO 17</p>
-      </div>
-
-      <div class="polaroid top-right">
-        <div class="photo">
-          <img src="polaroid9.png">
-        </div>
-        <div class="caption"> </div>
-      </div>
-
-      <div class="polaroid bottom-left">
-        <div class="photo">
-          <img src="polaroid9b.png">
-        </div>
-        <div class="caption"> </div>
-      </div>
-
-      <div class="text-block right">
-        <p>TEXTO 18</p>
-      </div>
-
-    </div>
-  </div>
-
-  <div class="page-back">
-    <div class="page-layout">
-
-      <div class="text-block left">
-        <p>TEXTO 19</p>
-      </div>
-
-      <div class="polaroid top-right">
-        <div class="photo">
-          <img src="polaroid10.png">
-        </div>
-        <div class="caption"> </div>
-      </div>
-
-      <div class="polaroid bottom-left">
-        <div class="photo">
-          <img src="polaroid10b.png">
-        </div>
-        <div class="caption"> </div>
-      </div>
-
-      <div class="text-block right">
-        <p>TEXTO 20</p>
-      </div>
-
-    </div>
-  </div>
-</div>
-
-
-      <div class="cover-spine"></div>
-      <div class="cover back"></div>
-      <div class="thumb-grid" id="thumbGrid" aria-live="polite"></div>
-      <div class="photo-area" id="photoArea"></div>
-    </div>
-  </main>
-</div>
-
-<div class="portal-container">
-
-  <!-- 1) fundo que vaza para as bordas (halo/névoa) -->
-  <div class="portal-bg-bleed"></div>
-
-  <!-- 2) borda texturizada do fundo -->
-  <div class="portal-border"></div>
-
-  <!-- 3) imagem interna do portal -->
-  <img class="portal-image" src="realworld.png" alt="Portal interior">
-
-  <!-- 4) hit-area -->
-  <svg class="portal-hit" viewBox="0 0 100 100" preserveAspectRatio="none" aria-hidden="true">
-    <rect x="0" y="0" width="100" height="100" fill="black" opacity="0" />
-  </svg>
-
-</div>
-
-<div class="portal-container">
-  <div class="portal-image">
-    <div class="portal-loop"></div>
-  </div>
-
-    <div class="portal-inner-border"></div>
-
-  <div class="portal-smoke"></div>
-
-  <div class="portal-border"></div>
-  <div class="portal-glow"></div>
-</div>
-<div id="overlay"></div>
-
-<script src="script.js"></script>
-</body>
-
-<div id="vinheta-topo"></div> <!-- Gancho -->
-<iframe id="frame-jogo" src=""></iframe> <!-- Iframe do jogo -->
-<audio id="bgm" src="omori.mp3" loop></audio>
-<div id="close-game">✕</div>
-
-
+  <div id="vinheta-topo"></div>
+  <!-- Gancho -->
+  <iframe id="frame-jogo" src=""></iframe>
+  <!-- Iframe do jogo -->
+  <audio id="bgm" src="omori.mp3" loop></audio>
+  <div id="close-game">✕</div>
 </html>
