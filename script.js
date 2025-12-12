@@ -561,7 +561,7 @@ document.addEventListener("DOMContentLoaded", () => {
   const frame = document.getElementById("frame-jogo");
   const closeBtn = document.getElementById("close-game");
   const bgm = document.getElementById("bgm");
-  const gamePath = "c2-sans-fight/index.html";
+  const gamePath = "LastBreathTrio.html";
 
   let isDragging = false;
   let startY = 0;
