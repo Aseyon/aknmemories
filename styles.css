@@ -2133,11 +2133,10 @@
   pointer-events: none;
 }
 
-/* Celulares (até 600px) */
 @media (max-width: 600px) {
   .signature-subtitle {
-    font-size: 3px;     /* bem menor */
-    margin-top: 0px;  /* sobe mais */
+    font-size: 3px;
+    margin-top: 0px;
     margin-bottom: 50px;
     font-family: 'Press Start 2P', cursive;
   }
