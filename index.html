@@ -2,153 +2,9 @@
 <html lang="pt-BR">
   <head>
     <meta charset="utf-8" />
-    <meta name="viewport" content="width=device-width,initial-scale=1" />
+<meta name="viewport" content="width=device-width,initial-scale=1"/>
     <title>Livro — Memórias do Ace</title>
-    <link rel="stylesheet" href="styles.css?v=1.0" />
-    <style>
-      /* ============================= */
-      /*            FUNDO              */
-      /* ============================= */
-      .bg-loop {
-        position: fixed;
-        inset: 0;
-        overflow: hidden;
-        z-index: 0;
-      }
-
-      .bg-layer {
-        position: absolute;
-        width: 100%;
-        height: 100%;
-        background: url("fndomori.png") center top / cover no-repeat;
-        filter: brightness(0.85) contrast(1.1) saturate(0.8);
-        animation: scrollBg 15s linear infinite;
-      }
-
-      .bg-layer:nth-child(2) {
-        top: -100%;
-      }
-
-      @keyframes scrollBg {
-        0% {
-          transform: translateY(0);
-        }
-        100% {
-          transform: translateY(100%);
-        }
-      }
-
-      .bg-overlay {
-        position: absolute;
-        inset: 0;
-        background: linear-gradient(
-          to bottom,
-          rgba(20, 10, 30, 0.11),
-          rgba(40, 20, 50, 0.6)
-        );
-        pointer-events: none;
-        z-index: 1;
-      }
-
-      .bg-glow {
-        position: absolute;
-        inset: 0;
-        background: radial-gradient(
-          circle,
-          rgba(255, 255, 255, 0.05) 0%,
-          transparent 80%
-        );
-        animation: glowPulse 6s ease-in-out infinite alternate;
-        z-index: 1;
-        pointer-events: none;
-      }
-
-      @keyframes glowPulse {
-        0% {
-          opacity: 0.05;
-        }
-        100% {
-          opacity: 0.15;
-        }
-      }
-
-      .bg-particles {
-        position: absolute;
-        inset: 0;
-        pointer-events: none;
-        z-index: 1;
-      }
-
-      .particle {
-        position: absolute;
-        width: 2px;
-        height: 2px;
-        background: rgba(255, 255, 255, 0.15);
-        border-radius: 50%;
-        animation: float 20s linear infinite;
-      }
-
-      @keyframes float {
-        0% {
-          transform: translateY(100vh) translateX(0);
-          opacity: 0;
-        }
-        50% {
-          opacity: 1;
-        }
-        100% {
-          transform: translateY(-10vh) translateX(50vw);
-          opacity: 0;
-        }
-      }
-
-      /* ============================= */
-      /*            MIST CSS           */
-      /* ============================= */
-      .bg-mist {
-        position: absolute;
-        inset: 0;
-        pointer-events: none;
-        z-index: 1;
-        background: radial-gradient(
-            circle,
-            rgba(255, 255, 255, 0.03) 0%,
-            rgba(255, 255, 255, 0) 70%
-          ),
-          radial-gradient(
-            circle,
-            rgba(200, 200, 255, 0.02) 0%,
-            rgba(255, 255, 255, 0) 60%
-          );
-        background-size: 200% 200%;
-        animation: driftMist 120s linear infinite;
-      }
-
-      @keyframes driftMist {
-        0% {
-          background-position: 0% 0%, 100% 100%;
-        }
-        50% {
-          background-position: 50% 50%, 50% 50%;
-        }
-        100% {
-          background-position: 100% 0%, 0% 100%;
-        }
-      }
-
-      body::before {
-        content: "";
-        position: fixed;
-        inset: 0;
-        pointer-events: none;
-        background: radial-gradient(
-          rgba(255, 255, 255, 0.02) 1px,
-          transparent 1px
-        );
-        background-size: 4px 4px;
-        z-index: 0;
-      }
-    </style>
+    <link rel="stylesheet" href="styles.css?v=2">
   </head>
   <body>
     <div class="pinwheel-container-ace">
@@ -873,21 +729,10 @@
         <rect x="0" y="0" width="100" height="100" fill="black" opacity="0" />
       </svg>
     </div>
-
-    <div class="portal-container">
-      <div class="portal-image">
-        <div class="portal-loop"></div>
       </div>
-
-      <div class="portal-inner-border"></div>
-
-      <div class="portal-smoke"></div>
-
-      <div class="portal-border"></div>
-      <div class="portal-glow"></div>
     </div>
     <div id="overlay"></div>
-
+    
     <script src="script.js?v=1.0"></script>
   </body>
 
