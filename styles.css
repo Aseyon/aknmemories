@@ -538,44 +538,7 @@
          opacity: 0;
     }
 }
- .bg-cloud {
-     position: absolute;
-     width: 200px;
-     height: 100px;
-     background: radial-gradient(ellipse at center, rgba(255, 255, 255, 0.08) 0%, transparent 70%);
-     border-radius: 50%;
-     pointer-events: none;
-     z-index: 1;
-     animation: cloudDrift 90s linear infinite;
-}
-/* ============================= */
-/* RESPONSIVIDADE - NUVENS */
-/* ============================= */
- @media (max-width: 980px) {
-     .bg-cloud {
-         width: 120px;
-         height: 60px;
-         animation-duration: 60s;
-    }
-}
- @media (max-width: 480px) {
-     .bg-cloud {
-         width: 80px;
-         height: 40px;
-         animation-duration: 45s;
-    }
-}
- @keyframes cloudDrift {
-     0% {
-         transform: translate(-50px, 20vh) scale(1);
-    }
-     50% {
-         transform: translate(50vw, 25vh) scale(1.1);
-    }
-     100% {
-         transform: translate(100vw, 30vh) scale(1);
-    }
-}
+
  body::after {
      content: "";
      position: fixed;
@@ -2174,4 +2137,3 @@
          height: 100%;
     }
 }
- 
