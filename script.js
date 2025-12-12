@@ -492,15 +492,6 @@ for (let i = 0; i < 50; i++) {
   extraParticlesContainer.appendChild(p);
 }
 
-for (let i = 0; i < 5; i++) {
-  const cloud = document.createElement("div");
-  cloud.className = "bg-cloud";
-  cloud.style.left = Math.random() * 100 + "vw";
-  cloud.style.top = Math.random() * 50 + "vh";
-  cloud.style.animationDelay = Math.random() * 60 + "s";
-  document.querySelector(".bg-loop").appendChild(cloud);
-}
-
 document.addEventListener("DOMContentLoaded", () => {
   const smokeContainer = document.querySelector(".portal-smoke");
   const portalImage = document.querySelector(".portal-image");
