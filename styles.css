@@ -2122,4 +2122,23 @@
          height: 100%;
     }
 }
- 
+
+.signature-subtitle {
+  font-family: 'Press Start 2P', cursive;
+  font-size: 8px;
+  color: rgba(0, 0, 0, 0.5);
+  text-align: center;
+  margin-top: -65px;
+  margin-bottom: 20px;
+  pointer-events: none;
+}
+
+/* Celulares (até 600px) */
+@media (max-width: 600px) {
+  .signature-subtitle {
+    font-size: 3px;     /* bem menor */
+    margin-top: 0px;  /* sobe mais */
+    margin-bottom: 50px;
+  }
+}
+
