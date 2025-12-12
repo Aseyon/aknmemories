@@ -28,6 +28,8 @@
   --portal-smoke-dark: rgba(40, 5, 120, 0.55);
 }
 
+
+
 * {
   box-sizing: border-box;
   margin: 0;
@@ -52,7 +54,6 @@ body,
 .thumb {
   font-family: 'Press Start 2P', cursive;
   color: #fff;
-  letter-spacing: 0.5px;
 }
 
 .scene {
@@ -2339,5 +2340,34 @@ body::before {
     width: 220px !important;
     height: 220px !important;
     left: 60% !important;
+  }
+}
+/* Ajustes só para telas pequenas */
+@media (max-width: 600px) {
+  body {
+    font-size: 14px; /* textos menores */
+  }
+
+  .polaroid {
+    --polaroid-size: 120px;
+    --photo-size: calc(var(--polaroid-size) - 24px);
+  }
+
+  .text-block {
+    font-size: clamp(10px, 3vw, 14px);
+    max-width: 90%;
+  }
+
+  .signature-title {
+    font-size: 2rem;
+  }
+
+  #page-back-layout-inner {
+    height: 300px;
+  }
+
+  .memory-photo-box {
+    width: 160px;
+    height: 160px;
   }
 }
