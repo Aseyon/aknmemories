@@ -1988,3 +1988,270 @@ body::before {
   right: -10px;
   transform: rotate(-20deg);
 }
+
+/* ======================================================= */
+/* ================   AJUSTES MOBILE   ==================== */
+/* ======================================================= */
+
+@media (max-width: 768px) {
+
+  /* ----- fundo ----- */
+  .bg-layer {
+    background-size: cover;
+    background-position: center;
+    filter: brightness(1.12) contrast(0.92) saturate(0.55) hue-rotate(-4deg);
+  }
+
+  /* ----- bigcat (gato gigante) ----- */
+  .bigcat {
+    width: 180px;
+    height: 180px;
+    top: -60px;
+    right: -10px;
+    background-size: contain;
+  }
+
+  .cat-ear {
+    width: 180px;
+    height: 180px;
+    top: -4px;
+  }
+
+  .cat-arms {
+    width: 180px;
+    height: 180px;
+    top: 55%;
+  }
+
+  /* ----- containers de fotos ----- */
+  .portrait-container {
+    position: static;      /* deixa elas fluírem no layout */
+    width: 80%;            /* adapta ao celular */
+    margin: 20px auto;     /* centraliza */
+    transform: none !important;
+  }
+
+  .photo-square {
+    width: 100%;
+  }
+
+  .caption-box {
+    max-width: 100%;
+    font-size: 14px;
+  }
+
+  .tape-realista {
+    transform: scale(0.7);
+    left: 50%;
+    top: -25px;
+    transform: translateX(-50%) rotate(-2deg) scale(0.8);
+  }
+
+  /* ----- livro ----- */
+  .book-wrap {
+    top: 100px;
+    width: 100vw;
+    transform: translateX(-50%) scale(0.75); /* encolhe o livro no celular */
+  }
+
+  .book {
+    width: 300px;
+    height: 380px;
+  }
+
+  .cover,
+  .page {
+    border-radius: 4px;
+  }
+
+  .front-title-wrap {
+    top: 18%;
+  }
+
+  .album-subtitle {
+    font-size: 1.2rem;
+  }
+
+  /* ----- spine ----- */
+  .cover-spine {
+    left: -7%;
+    width: 10px;
+  }
+
+  /* ----- pinwheel (catavento) ----- */
+  .pinwheel-container-ace {
+    top: auto;
+    bottom: 10px;
+    left: 70%;
+    transform: scale(0.7);
+  }
+
+  /* ----- partículas e mist ----- */
+  .bg-particles,
+  .bg-mist,
+  .bg-glow {
+    opacity: 0.5;
+  }
+}
+
+/* ======================================================= */
+/* =========== AJUSTES MOBILE – PARTE 2 ================== */
+/* ======================================================= */
+
+@media (max-width: 768px) {
+
+  /* ---------- PINWHEELS (cataventos) ---------- */
+  .pinwheel-container-brun,
+  .pinwheel-container-berg {
+    width: 100px;
+    height: 150px;
+    top: auto;
+    bottom: 20px;
+    left: 10px;
+    transform: scale(0.7);
+  }
+
+  .pinwheel-container-berg {
+    left: auto;
+    right: 10px;
+  }
+
+  /* ---------- PORTAL ---------- */
+  .portal-container {
+    width: 200px;
+    height: 200px;
+    top: 20%;
+    left: 50%;
+    transform: translateX(-50%);
+  }
+
+  .portal-loop::before,
+  .portal-loop::after {
+    animation-duration: 18s; /* mais rápido pra mobile não engasgar */
+  }
+
+  /* ---------- POLAROID ---------- */
+  .polaroid {
+    --polaroid-size: 140px;
+    width: var(--polaroid-size);
+    height: calc(var(--polaroid-size) + 32px);
+    transform: scale(0.9);
+  }
+
+  .polaroid.top-right,
+  .polaroid.bottom-left {
+    position: static;
+    margin: 10px auto;
+  }
+
+  .polaroid .caption {
+    font-size: 10px;
+  }
+
+  /* ---------- RANDOM IMAGES (página final) ---------- */
+  #page-back-layout-inner {
+    height: 350px;
+  }
+
+  .random-img {
+    max-width: 26%;
+    max-height: 26%;
+  }
+
+  /* reorganiza para que não fiquem estouradas fora da tela */
+  .random-img:nth-child(n) {
+    left: auto;
+    top: auto;
+  }
+
+  /* simplifica o layout vertical */
+  .random-img:nth-child(1) { top: 10%; left: 5%; }
+  .random-img:nth-child(2) { top: 10%; left: 35%; }
+  .random-img:nth-child(3) { top: 10%; left: 65%; }
+
+  .random-img:nth-child(4) { top: 40%; left: 5%; }
+  .random-img:nth-child(5) { top: 40%; left: 35%; }
+  .random-img:nth-child(6) { top: 40%; left: 65%; }
+
+  .random-img:nth-child(7) { top: 70%; left: 5%; }
+  .random-img:nth-child(8) { top: 70%; left: 35%; }
+  .random-img:nth-child(9) { top: 70%; left: 65%; }
+
+  /* ---------- SIGNATURE PAGE (Assinaturas) ---------- */
+  .signature-title {
+    font-size: 2rem;
+    margin-top: 30px;
+  }
+
+  .signature-lines {
+    gap: 18px;
+  }
+
+  .signature-line {
+    height: 28px;
+  }
+
+  .signature-input,
+  .signature-text {
+    font-size: 16px;
+    height: 28px;
+  }
+
+  /* ---------- MEMORY PAGE (Memórias) ---------- */
+  .memory-photo-box {
+    width: 180px;
+    height: 180px;
+  }
+
+  .memory-text {
+    font-size: 14px;
+    margin-top: 18px;
+  }
+
+  .memory-star {
+    width: 20px;
+    height: 20px;
+  }
+
+  /* ---------- INTRO (página inicial) ---------- */
+  .intro-container {
+    margin-top: 20px;
+  }
+
+  .intro-image {
+    width: 90%;
+    height: auto;
+  }
+
+  .intro-texts-top {
+    width: 90%;
+    margin: 10px auto;
+  }
+
+  .intro-texts-top p {
+    font-size: 12px;
+  }
+
+  /* ---------- PAGE LAYOUT ---------- */
+  .page-layout p {
+    font-size: 14px;
+  }
+
+  .text-block {
+    width: 90%;
+    height: auto;
+    font-size: 12px;
+    position: static;
+    margin: 10px auto;
+  }
+
+  /* ---------- FUNDO ---------- */
+  .bg-layer {
+    filter: brightness(1.12) contrast(0.92) saturate(0.55);
+  }
+
+  body::before {
+    background-size: 3px 3px;
+    opacity: 0.35;
+  }
+}
