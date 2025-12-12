@@ -32,6 +32,8 @@
      background: linear-gradient(180deg, var(--bg-deep), #22152a);
      color: #efe8f3;
      -webkit-font-smoothing: antialiased;
+     overflow: hidden;
+     touch-action: none; 
 }
  @media (min-width: 1024px) {
      html, body {
