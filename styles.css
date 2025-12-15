@@ -2177,19 +2177,40 @@ html.loading * {
 
 @media (max-width: 980px) {
 
+  /* Fundo base */
   .bg-loop {
-    position: absolute; /* scroll normal, sem fixed */
+    position: fixed;
+    inset: 0;
+    width: 100svw;
+    height: 100svh;
+    overflow: hidden;
+    z-index: -1;
   }
 
+  /* Camadas do fundo */
   .bg-layer {
     position: absolute;
-    background-size: cover; /* evita zoom estranho */
-    background-repeat: no-repeat;
-    background-position: center center;
+    inset: 0;
 
-    /* remove filtros que causam repaints */
+    background-size: cover;
+    background-position: center;
+    background-repeat: no-repeat;
+
+    /* REMOVE TUDO que força repaint */
+    animation: none !important;
     filter: none !important;
-    opacity: 0.88 !important;
+    will-change: auto !important;
+    transform: none !important;
+
+    opacity: 0.9;
+  }
+
+  /* Remove camadas extras pesadas */
+  .bg-layer:nth-child(2),
+  .bg-mist,
+  .bg-glow,
+  .bg-particles {
+    display: none !important;
   }
 }
 
