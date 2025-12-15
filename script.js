@@ -661,5 +661,10 @@ window.addEventListener("load", () => {
   document.documentElement.classList.remove("loading");
 
   const preload = document.getElementById("preload");
-  if (preload) preload.remove();
+  if (!preload) return;
+
+  preload.style.opacity = "0";
+  preload.style.transition = "opacity 0.6s ease";
+
+  setTimeout(() => preload.remove(), 600);
 });
