@@ -2365,3 +2365,7 @@ html, body {
   }
 }
 
+* {
+    outline: none; /* remove a borda de foco */
+    -webkit-tap-highlight-color: transparent; /* remove o quadrado azul no mobile */
+}
