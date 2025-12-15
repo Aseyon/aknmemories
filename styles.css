@@ -415,20 +415,7 @@
      border-radius: 50%;
      animation: float 20s linear infinite;
 }
- @media (max-width: 980px) {
-     .particle {
-         width: 1.5px;
-         height: 1.5px;
-         background: rgba(255, 255, 255, 0.12);
-    }
-}
- @media (max-width: 480px) {
-     .particle {
-         width: 1px;
-         height: 1px;
-         background: rgba(255, 255, 255, 0.1);
-    }
-}
+
  @keyframes float {
      0% {
          transform: translateY(100vh) translateX(0);
@@ -451,18 +438,7 @@
      background-size: 200% 200%;
      animation: driftMist 120s linear infinite;
 }
- @media (max-width: 980px) {
-     .bg-mist {
-         background-size: 300% 300%;
-         opacity: 0.6;
-    }
-}
- @media (max-width: 480px) {
-     .bg-mist {
-         background-size: 400% 400%;
-         opacity: 0.4;
-    }
-}
+
  @keyframes driftMist {
      0% {
          background-position: 0% 0%, 100% 100%;
@@ -505,28 +481,10 @@
      body::before {
          background-size: 6px 6px;
     }
-     .particle-extra {
-         width: 2px;
-         height: 2px;
-         opacity: 0.03;
-    }
-     .particle {
-         width: 1.5px;
-         height: 1.5px;
-    }
 }
  @media (max-width: 480px) {
      body::before {
          background-size: 8px 8px;
-    }
-     .particle-extra {
-         width: 1.5px;
-         height: 1.5px;
-         opacity: 0.02;
-    }
-     .particle {
-         width: 1px;
-         height: 1px;
     }
 }
  @keyframes floatExtra {
@@ -1556,18 +1514,7 @@
      pointer-events: none;
      z-index: 1;
 }
- .bg-glow {
-     background: radial-gradient(circle, rgba(255, 255, 255, 0.05) 0%, transparent 80%);
-     animation: glowPulse 6s ease-in-out infinite alternate;
-}
- @keyframes glowPulse {
-     0% {
-         opacity: 0.05;
-    }
-     100% {
-         opacity: 0.15;
-    }
-}
+
  .particle {
      position: absolute;
      width: 2px;
@@ -2159,11 +2106,11 @@
 
   /* partículas / fumaça / efeitos */
   .particle,
+  .bg-particles,
   .bg-particles-extra,
   .particle-extra,
   .bg-mist,
-  .bg-glow,
-  .effects {
+  .bg-glow {
     display: none !important;
   }
 
