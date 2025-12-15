@@ -864,17 +864,24 @@
     <div id="overlay"></div>
     
     <script src="script.js?v=1.0"></script>
-  </body>
-
+    <!-- overlay / iframe / controles -->
+  <div id="overlay"></div>
   <div id="vinheta-topo"></div>
-  <!-- Gancho -->
+
   <iframe id="frame-jogo" src=""></iframe>
-  <!-- Iframe do jogo -->
+  <div id="close-game">✕</div>
+
+  <!-- áudio (APENAS UM) -->
   <audio id="bgm" src="omori.mp3" loop></audio>
 
+  <!-- LOADER (APENAS UM) -->
   <div id="preload">
-  <span>carregando…</span>
-</div>
+    <div class="loader">
+      <span>carregando</span><span class="dots">...</span>
+    </div>
+  </div>
 
-  <div id="close-game">✕</div>
+  <!-- SCRIPT SEMPRE POR ÚLTIMO + DEFER -->
+  <script src="script.js?v=1.0" defer></script>
+</body>
 </html>
