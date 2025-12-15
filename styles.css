@@ -2175,20 +2175,50 @@
   }
 }
 
-/* ===== LOADING SCREEN ===== */
+/* ===== LOADING ESTÉTICO ===== */
+
 #preload {
   position: fixed;
   inset: 0;
-  background: #140b18;
-  color: #aaa;
+  background: radial-gradient(
+    circle at center,
+    #1b0f22 0%,
+    #120815 70%
+  );
   display: flex;
   align-items: center;
   justify-content: center;
   z-index: 99999;
-  font-size: 0.9rem;
 }
 
-/* bloqueia interação enquanto carrega */
+/* conteúdo central */
+.loader {
+  text-align: center;
+  font-size: 0.95rem;
+  letter-spacing: 0.3px;
+  color: rgba(255, 255, 255, 0.65);
+  animation: fadeIn 1.2s ease forwards;
+}
+
+/* animação de pontos */
+.loader .dots {
+  display: inline-block;
+  width: 1.2em;
+  text-align: left;
+  animation: dots 1.4s steps(3) infinite;
+}
+
+@keyframes dots {
+  0%   { clip-path: inset(0 100% 0 0); }
+  100% { clip-path: inset(0 0 0 0); }
+}
+
+@keyframes fadeIn {
+  from { opacity: 0; }
+  to   { opacity: 1; }
+}
+
+/* bloqueio durante loading */
 html.loading {
   overflow: hidden;
   touch-action: none;
