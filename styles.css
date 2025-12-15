@@ -326,28 +326,29 @@
      opacity: 0.9;
 }
  @media (max-width: 980px) {
-     .bg-layer {
-         background-size: cover;
-         filter: brightness(1.05) contrast(0.9) saturate(0.6) hue-rotate(-4deg) blur(0.4px);
-         animation: scrollBg 40s linear infinite;
-    }
-     .bg-layer:nth-child(2) {
-         top: -100%;
-         opacity: 0.85;
-    }
+  .bg-layer {
+    background-size: cover;
+
+    filter: none;
+
+    animation: none;
+
+    will-change: auto;
+  }
+
+  .bg-layer:nth-child(2) {
+    top: -100%;
+    opacity: 0.85;
+  }
 }
+
  @media (max-width: 480px) {
-     .bg-layer {
-         background-size: cover;
-         filter: brightness(1) contrast(0.85) saturate(0.6) hue-rotate(-4deg) blur(0.3px);
-         animation: scrollBg 30s linear infinite;
-        /* ainda mais rápido */
-    }
-     .bg-layer:nth-child(2) {
-         top: -100%;
-         opacity: 0.8;
-    }
+  .bg-layer {
+    filter: none;
+    animation: none;
+  }
 }
+
  @keyframes scrollBg {
      0% {
          transform: translateY(0);
