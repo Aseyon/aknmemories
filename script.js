@@ -691,3 +691,103 @@ window.addEventListener("load", () => {
 
   setTimeout(() => preload.remove(), 600);
 });
+
+// Detecta mobile
+const isMobile = window.matchMedia("(max-width: 768px)").matches;
+
+let startedd = false;
+
+// Áudio PC
+const bgmPC = document.getElementById("bgm-pc");
+// Áudio Mobile
+const bgmMobile = document.getElementById("bgm-mobile");
+const mobileBtn = document.getElementById("mobile-audio-btn");
+
+// Função de fade
+function fadeInAudio(audio) {
+  const fadeDuration = 2500;
+  const steps = 50;
+  const stepTime = fadeDuration / steps;
+
+  let vol = 0;
+  audio.volume = 0;
+
+  const fade = setInterval(() => {
+    vol += 1 / steps;
+    if (vol >= 1) {
+      vol = 1;
+      clearInterval(fade);
+    }
+    audio.volume = vol;
+  }, stepTime);
+}
+
+// PC: função normal
+function startMusic() {
+  if (startedd) return;
+  startedd = true;
+
+  bgmPC.play()
+    .then(() => fadeInAudio(bgmPC))
+    .catch(err => console.warn("Falhou:", err));
+}
+document.addEventListener("DOMContentLoaded", () => {
+  const isMobile = window.matchMedia("(max-width: 768px)").matches;
+
+  let started = false;
+
+  const bgmPC = document.getElementById("bgm-pc");
+  const bgmMobile = document.getElementById("bgm-mobile");
+  const mobileBtn = document.getElementById("mobile-audio-btn");
+
+  function fadeInAudio(audio) {
+    const fadeDuration = 2500;
+    const steps = 50;
+    const stepTime = fadeDuration / steps;
+
+    let vol = 0;
+    audio.volume = 0;
+
+    const fade = setInterval(() => {
+      vol += 1 / steps;
+      if (vol >= 1) {
+        vol = 1;
+        clearInterval(fade);
+      }
+      audio.volume = vol;
+    }, stepTime);
+  }
+
+  // PC: função normal
+  function startMusicPC() {
+    if (started) return;
+    started = true;
+
+    bgmPC.play().then(() => fadeInAudio(bgmPC)).catch(err => console.warn("Falhou:", err));
+  }
+
+  // Mobile: só toca pelo botão
+  function setupMobileAudio() {
+    if (!mobileBtn || !bgmMobile) return;
+
+    mobileBtn.addEventListener("click", () => {
+      if (started) return;
+      started = true;
+
+      bgmMobile.play()
+        .then(() => {
+          fadeInAudio(bgmMobile);
+          mobileBtn.remove(); // some após tocar
+        })
+        .catch(err => console.warn("Mobile bloqueou:", err));
+    });
+  }
+
+  if (isMobile) {
+    setupMobileAudio();
+  } else {
+    // PC inicia automaticamente ou via função
+    startMusicPC();
+    mobileBtn.remove();
+  }
+});
