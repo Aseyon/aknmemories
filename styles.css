@@ -2174,3 +2174,10 @@
     display: none !important;
   }
 }
+
+@media (max-width: 980px) {
+  canvas {
+    display: none !important;
+  }
+}
+
