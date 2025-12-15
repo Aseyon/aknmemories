@@ -437,6 +437,8 @@ function startMusic() {
   if (started) return;
 
   bgm.volume = 0;
+  bgm.load(); // 🔴 MUITO IMPORTANTE NO MOBILE
+
   const fadeDuration = 2500;
   const steps = 50;
   const stepTime = fadeDuration / steps;
