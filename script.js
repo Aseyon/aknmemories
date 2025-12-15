@@ -702,3 +702,16 @@ window.addEventListener("load", () => {
 
   setTimeout(() => preload.remove(), 600);
 });
+
+const messages = [
+  "Carregando texturas...",
+  "Preparando áudio...",
+  "Aparando a grama...",
+  "Quase lá..."
+];
+let i = 0;
+const msgEl = document.getElementById("loading-message");
+setInterval(() => {
+  i = (i + 1) % messages.length;
+  msgEl.textContent = messages[i];
+}, 2000);
