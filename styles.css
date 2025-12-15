@@ -34,42 +34,49 @@
      -webkit-font-smoothing: antialiased;
 }
  @media (min-width: 1024px) {
-     html, body {
-         width: 100vw;
-         height: 100vh;
-         overflow: hidden;
-         display: flex;
-         justify-content: center;
-         align-items: center;
-         background: linear-gradient(180deg, var(--bg-deep), #22152a);
-    }
+  html, body {
+    width: 100%;
+    min-height: 100%;
+    overflow-x: hidden;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    background: linear-gradient(180deg, var(--bg-deep), #22152a);
+  }
 }
+
  @import url('https://fonts.googleapis.com/css2?family=Press+Start+2P&display=swap');
  @media (max-width: 1024px) {
-     body, .caption-box, .photo-placeholder, .chapter, .thumb {
-         font-size: 0.9rem;
-    }
-     .scene {
-         min-height: 80vh;
-    }
+  body, .caption-box, .photo-placeholder, .chapter, .thumb {
+    font-size: clamp(0.9rem, 3vw, 1rem);
+  }
+
+  .scene {
+    min-height: 80svh;
+  }
 }
+
  @media (max-width: 768px) {
-     body, .caption-box, .photo-placeholder, .chapter, .thumb {
-         font-size: 0.8rem;
-    }
-     .scene {
-         min-height: 70vh;
-    }
+  body, .caption-box, .photo-placeholder, .chapter, .thumb {
+    font-size: clamp(0.85rem, 3.8vw, 0.95rem);
+  }
+
+  .scene {
+    min-height: 75svh;
+  }
 }
+
  @media (max-width: 480px) {
-     body, .caption-box, .photo-placeholder, .chapter, .thumb {
-         font-size: 0.7rem;
-         letter-spacing: 0.3px;
-    }
-     .scene {
-         min-height: 60vh;
-    }
+  body, .caption-box, .photo-placeholder, .chapter, .thumb {
+    font-size: clamp(0.8rem, 4vw, 0.9rem);
+    letter-spacing: 0.2px;
+  }
+
+  .scene {
+    min-height: 70svh;
+  }
 }
+
  .grass-area {
      position: fixed;
      bottom: 0;
