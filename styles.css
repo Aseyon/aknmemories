@@ -2175,8 +2175,18 @@ html.loading * {
   pointer-events: none;
 }
 
+html, body {
+  width: 100%;
+  height: 100%;
+  overflow: hidden;
+
+  touch-action: none;          /* bloqueia pinch */
+  overscroll-behavior: none;
+  -ms-touch-action: none;
+}
+
 @media (max-width: 980px) {
-  body {
-    overflow-x: hidden;
+  * {
+    touch-action: none;
   }
 }
