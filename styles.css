@@ -2158,9 +2158,9 @@
 @media (max-width: 980px) {
 
   /* partículas / fumaça / efeitos */
-  .particles,
-  .smoke,
-  .fog,
+  .particle,
+  .bg-particles-extra,
+  .particle-extra,
   .bg-mist,
   .bg-glow,
   .effects {
