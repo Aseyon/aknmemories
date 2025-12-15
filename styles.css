@@ -2174,3 +2174,37 @@ html.loading {
 html.loading * {
   pointer-events: none;
 }
+
+@media (max-width: 980px) {
+
+  .bg-loop {
+    position: absolute; /* scroll normal, sem fixed */
+  }
+
+  .bg-layer {
+    position: absolute;
+    background-size: cover; /* evita zoom estranho */
+    background-repeat: no-repeat;
+    background-position: center center;
+
+    /* remove filtros que causam repaints */
+    filter: none !important;
+    opacity: 0.88 !important;
+  }
+}
+
+@media (max-width: 980px) {
+
+  /* =========================
+     DESATIVA JOGO NO MOBILE
+     ========================= */
+
+  #vinheta-topo,
+  #frame-jogo,
+  #close-game {
+    display: none !important;
+    visibility: hidden !important;
+    pointer-events: none !important;
+  }
+
+}
