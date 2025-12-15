@@ -2210,8 +2210,8 @@ body,
   inset: 0;
   background: radial-gradient(
     circle at center,
-    #1b0f22 0%,
-    #120815 70%
+    #0e0b1a 0%,
+    #030307 70%
   );
   display: flex;
   flex-direction: column;
@@ -2236,8 +2236,8 @@ body,
 
 /* GIF central (parado) */
 .loader-gif {
-  width: 120px;
-  height: 120px;
+  width: 150px;
+  height: 140px;
   object-fit: contain;
 }
 
