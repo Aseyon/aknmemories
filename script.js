@@ -736,6 +736,14 @@ document.addEventListener("DOMContentLoaded", () => {
     }, stepTime);
   }
 
+  function setupLoop(audio) {
+    if (!audio) return;
+    audio.addEventListener("ended", () => {
+      audio.currentTime = 0;
+      audio.play().catch(err => console.warn("Erro ao repetir:", err));
+    });
+  }
+
   if (isMobile) {
     // Bloqueia bgm do PC
     if (bgmPC) {
@@ -755,6 +763,7 @@ document.addEventListener("DOMContentLoaded", () => {
           .then(() => fadeIn(bgmMobile, 0.5))
           .catch(err => console.warn("Mobile bloqueou:", err));
 
+        setupLoop(bgmMobile); // Loop infinito
         mobileBtn.remove();
       });
     }
@@ -765,6 +774,8 @@ document.addEventListener("DOMContentLoaded", () => {
       bgmPC.play()
         .then(() => fadeIn(bgmPC, 1))
         .catch(err => console.warn("Falhou no PC:", err));
+
+      setupLoop(bgmPC); // Loop infinito
     }
 
     // Remove botão mobile e bgm-mobile
