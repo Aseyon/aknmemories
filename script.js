@@ -2,6 +2,9 @@ document.addEventListener("DOMContentLoaded", () => {
   // seu código original começa aqui
 });
 
+if (window.matchMedia("(max-width: 980px)").matches) {
+  document.body.classList.add("mobile-no-game");
+}
 
 const thumbGrid = document.getElementById("thumbGrid");
 const photoArea = document.getElementById("photoArea");
