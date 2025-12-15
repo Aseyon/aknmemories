@@ -90,7 +90,10 @@
  #grassSVG {
      width: 100%;
      height: 100%;
+  shape-rendering: geometricPrecision;
+  image-rendering: auto;
 }
+
  .bigcat {
      position: absolute;
      top: -200px;
@@ -2065,22 +2068,33 @@
     }
 }
  @media (max-width: 768px) {
-     .grass-area {
-         height: 25vh;
-    }
-     #grassSVG {
-         width: 100%;
-         height: 100%;
-    }
+  .grass-area {
+    height: 28vh; /* um pouco mais de área = menos esticado */
+  }
+
+  #grassSVG {
+    width: 100%;
+    height: 100%;
+
+    /* melhora renderização do SVG no mobile */
+    shape-rendering: geometricPrecision;
+    image-rendering: auto;
+  }
 }
- @media (max-width: 400px) {
-     .grass-area {
-         height: 20vh;
-    }
-     #grassSVG {
-         width: 100%;
-         height: 100%;
-    }
+
+@media (max-width: 400px) {
+  .grass-area {
+    height: 22vh; /* mantém proporção mais natural */
+    width: 175vh;
+  }
+
+  #grassSVG {
+    width: 100%;
+    height: 100%;
+
+    shape-rendering: geometricPrecision;
+    image-rendering: auto;
+  }
 }
 
 .signature-subtitle {
