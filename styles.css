@@ -2320,7 +2320,7 @@ html, body {
   border: none;
   border-radius: 12px;
   cursor: pointer;
-  z-index: 100000;
+  z-index: 500;
   box-shadow: 0 6px 18px rgba(0, 0, 0, 0.4);
   transition: all 0.3s ease;
 }
