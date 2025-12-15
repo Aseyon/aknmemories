@@ -1,3 +1,8 @@
+document.addEventListener("DOMContentLoaded", () => {
+  // seu código original começa aqui
+});
+
+
 const thumbGrid = document.getElementById("thumbGrid");
 const photoArea = document.getElementById("photoArea");
 const prevThumb = document.getElementById("prev");
@@ -650,4 +655,11 @@ document.addEventListener("DOMContentLoaded", () => {
   document.addEventListener("touchend", endDrag);
 
   closeBtn.addEventListener("click", closeGame);
+});
+
+window.addEventListener("load", () => {
+  document.documentElement.classList.remove("loading");
+
+  const preload = document.getElementById("preload");
+  if (preload) preload.remove();
 });
