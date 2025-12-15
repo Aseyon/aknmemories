@@ -2174,3 +2174,9 @@ html.loading {
 html.loading * {
   pointer-events: none;
 }
+
+@media (max-width: 980px) {
+  body {
+    overflow-x: hidden;
+  }
+}
