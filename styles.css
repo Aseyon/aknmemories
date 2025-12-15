@@ -2229,3 +2229,36 @@ html.loading * {
   }
 
 }
+
+@media (max-width: 980px) {
+
+  /* REMOVE COMPLETAMENTE o sistema de fundo */
+  .bg-loop,
+  .bg-layer,
+  .bg-overlay,
+  .bg-mist,
+  .bg-glow,
+  .bg-particles {
+    display: none !important;
+  }
+
+  /* Garante viewport REAL */
+  html, body {
+    width: 100%;
+    min-height: 100svh;
+    margin: 0;
+  }
+
+  /* FUNDO SIMPLES E ESTÁVEL */
+  body {
+    background-image: url("SEU_FUNDO_AQUI.jpg"); /* usa UMA imagem */
+    background-size: cover;
+    background-position: center;
+    background-repeat: no-repeat;
+    background-attachment: scroll;
+
+    overflow-x: hidden;
+    overscroll-behavior: none;
+    touch-action: manipulation;
+  }
+}
