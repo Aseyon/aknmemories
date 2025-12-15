@@ -437,32 +437,38 @@ function startMusic() {
   if (started) return;
 
   bgm.volume = 0;
-  bgm.load(); // 🔴 MUITO IMPORTANTE NO MOBILE
+  bgm.load();
 
   const fadeDuration = 2500;
   const steps = 50;
   const stepTime = fadeDuration / steps;
 
-  bgm
-    .play()
-    .then(() => {
-      started = true;
+  const onReady = () => {
+    bgm
+      .play()
+      .then(() => {
+        started = true;
 
-      let vol = 0;
-      const fadeInterval = setInterval(() => {
-        vol += 1 / steps;
-        if (vol >= 1) {
-          vol = 1;
-          clearInterval(fadeInterval);
-        }
-        bgm.volume = vol;
-      }, stepTime);
+        let vol = 0;
+        const fadeInterval = setInterval(() => {
+          vol += 1 / steps;
+          if (vol >= 1) {
+            vol = 1;
+            clearInterval(fadeInterval);
+          }
+          bgm.volume = vol;
+        }, stepTime);
 
-      removeListeners();
-    })
-    .catch((err) => {
-      console.warn("Falhou, esperando próxima interação...", err);
-    });
+        removeListeners();
+      })
+      .catch(err => {
+        console.warn("Falhou:", err);
+      });
+
+    bgm.removeEventListener("canplaythrough", onReady);
+  };
+
+  bgm.addEventListener("canplaythrough", onReady);
 }
 
 window.addEventListener("resize", () => {
