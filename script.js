@@ -486,11 +486,6 @@ function removeListeners() {
   window.removeEventListener("touchstart", startMusic);
 }
 
-window.addEventListener("click", startMusic);
-window.addEventListener("keydown", startMusic);
-window.addEventListener("scroll", startMusic);
-window.addEventListener("touchstart", startMusic);
-
 // ===== PARTÍCULAS =====
 const particlesContainer = document.querySelector(".bg-particles");
 if (particlesContainer) {
@@ -715,3 +710,68 @@ setInterval(() => {
   i = (i + 1) % messages.length;
   msgEl.textContent = messages[i];
 }, 2000);
+
+document.addEventListener("DOMContentLoaded", () => {
+  const isMobile = window.matchMedia("(max-width: 768px)").matches;
+  let started = false;
+
+  const bgmPC = document.getElementById("bgm");
+  const bgmMobile = document.getElementById("bgm-mobile");
+  const mobileBtn = document.getElementById("mobile-audio-btn");
+
+  function fadeIn(audio, targetVolume = 1, duration = 2500) {
+    if (!audio) return;
+    let steps = 50;
+    let stepTime = duration / steps;
+    let vol = audio.volume;
+    let increment = (targetVolume - vol) / steps;
+
+    const fade = setInterval(() => {
+      vol += increment;
+      if ((increment > 0 && vol >= targetVolume) || (increment < 0 && vol <= targetVolume)) {
+        vol = targetVolume;
+        clearInterval(fade);
+      }
+      audio.volume = vol;
+    }, stepTime);
+  }
+
+  if (isMobile) {
+    // Bloqueia bgm do PC
+    if (bgmPC) {
+      bgmPC.pause();
+      bgmPC.currentTime = 0;
+    }
+
+    // Mostra botão e toca bgm-mobile apenas com clique
+    if (mobileBtn && bgmMobile) {
+      mobileBtn.style.display = "block";
+      mobileBtn.addEventListener("click", () => {
+        if (started) return;
+        started = true;
+
+        bgmMobile.volume = 0;
+        bgmMobile.play()
+          .then(() => fadeIn(bgmMobile, 0.5))
+          .catch(err => console.warn("Mobile bloqueou:", err));
+
+        mobileBtn.remove();
+      });
+    }
+  } else {
+    // PC: toca bgm normalmente
+    if (bgmPC) {
+      bgmPC.volume = 0;
+      bgmPC.play()
+        .then(() => fadeIn(bgmPC, 1))
+        .catch(err => console.warn("Falhou no PC:", err));
+    }
+
+    // Remove botão mobile e bgm-mobile
+    if (mobileBtn) mobileBtn.remove();
+    if (bgmMobile) {
+      bgmMobile.pause();
+      bgmMobile.currentTime = 0;
+    }
+  }
+});
