@@ -5,6 +5,30 @@
      font-style: normal;
 }
  @import url('https://fonts.googleapis.com/css2?family=Press+Start+2P&display=swap');
+
+/* ===== Carregar Patrick Hand do Google Fonts ===== */
+@import url('https://fonts.googleapis.com/css2?family=Patrick+Hand&display=swap');
+
+/* ===== Estilos só para celular ===== */
+@media (max-width: 768px) {
+    body {
+        font-family: 'Patrick Hand', cursive; /* Texto principal no celular */
+    }
+
+    h1, h2, h3, h4, h5, h6 {
+        font-family: 'Patrick Hand', cursive; /* Títulos no celular */
+    }
+
+    p {
+        font-family: 'Patrick Hand', cursive; /* Parágrafos no celular */
+    }
+
+    .thought, .highlight {
+        font-family: 'Patrick Hand', cursive; /* Pensamentos ou frases especiais */
+        font-size: 1.1em;
+    }
+}
+
  :root {
      --bg-deep: #0b0712;
      --accent: #d9b47a;
@@ -2340,3 +2364,4 @@ html, body {
     display: none;
   }
 }
+
