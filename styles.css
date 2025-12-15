@@ -2305,3 +2305,38 @@ html, body {
     inset: 0;
   }
 }
+
+/* Botão só para mobile */
+#mobile-audio-btn {
+  position: fixed;
+  bottom: 1%;
+  left: 50%;
+  transform: translateX(-50%);
+  padding: 12px 28px;
+  font-size: 1rem;
+  font-weight: bold;
+  color: #fff;
+  background: linear-gradient(135deg, #1b9a5a, #47bc78);
+  border: none;
+  border-radius: 12px;
+  cursor: pointer;
+  z-index: 100000;
+  box-shadow: 0 6px 18px rgba(0, 0, 0, 0.4);
+  transition: all 0.3s ease;
+}
+
+#mobile-audio-btn:hover {
+  transform: translateX(-50%) scale(1.05);
+  box-shadow: 0 8px 24px rgba(0, 0, 0, 0.5);
+}
+
+#mobile-audio-btn:active {
+  transform: translateX(-50%) scale(0.95);
+}
+
+/* Esconde no PC */
+@media (min-width: 769px) {
+  #mobile-audio-btn {
+    display: none;
+  }
+}
