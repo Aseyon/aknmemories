@@ -1095,7 +1095,7 @@
 /* CATA-VENTO */
  .pinwheel-container-ace {
      position: fixed;
-     top: 60%;
+     top: 80%;
      left: 80%;
      width: 180px;
      height: 280px;
@@ -1282,15 +1282,15 @@
          transform-origin: 100px 100px;
     }
      .pinwheel-container-ace {
-         top: 82%;
+         top: 80%;
          left: 70%;
     }
      .pinwheel-container-brun {
-         top: 82%;
+         top: 80%;
          left: 0%;
     }
      .pinwheel-container-berg {
-         top: 82%;
+         top: 80%;
          left: 20%;
     }
 }
@@ -2085,7 +2085,7 @@
 @media (max-width: 400px) {
   .grass-area {
     height: 22vh; /* mantém proporção mais natural */
-    width: 175vh;
+    width: 150vh;
   }
 
   #grassSVG {
