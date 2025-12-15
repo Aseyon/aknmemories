@@ -1,8 +1,11 @@
 <!DOCTYPE html>
 <html lang="pt-BR">
   <head>
+    <script>
+  document.documentElement.classList.add("loading");
+</script>
     <meta charset="utf-8" />
-<meta name="viewport" content="width=device-width,initial-scale=1"/>
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Livro — Memórias do Ace</title>
     <link rel="stylesheet" href="styles.css?v=2">
   </head>
@@ -868,5 +871,10 @@
   <iframe id="frame-jogo" src=""></iframe>
   <!-- Iframe do jogo -->
   <audio id="bgm" src="omori.mp3" loop></audio>
+
+  <div id="preload">
+  <span>carregando…</span>
+</div>
+
   <div id="close-game">✕</div>
 </html>
