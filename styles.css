@@ -2369,3 +2369,9 @@ html, body {
     outline: none; /* remove a borda de foco */
     -webkit-tap-highlight-color: transparent; /* remove o quadrado azul no mobile */
 }
+
+@media (max-width: 768px) {
+    body, h1, h2, h3, h4, h5, h6, p, button, a, .text-block.left, .text-block.right {
+        font-family: 'Patrick Hand', cursive !important;
+    }
+}
