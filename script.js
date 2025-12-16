@@ -324,17 +324,21 @@ const catArms = document.querySelector(".cat-arms");
 let opened = false;
 let currentPage = 0;
 
+// ===== Pré-carregar imagens das páginas =====
+pages.forEach(p => {
+  const imgs = p.querySelectorAll("img");
+  imgs.forEach(img => {
+    const pre = new Image();
+    pre.src = img.dataset.src || img.src;
+  });
+});
+
 function centerBook() {
   bookWrap.style.position = "fixed";
   bookWrap.style.top = "50%";
   bookWrap.style.left = "50%";
 
-  // se o livro estiver aberto, considerar tamanho dobrado
-  let scale = 1;
-  if (opened) {
-    scale = 1; // ajustar se precisar de zoom
-  }
-
+  let scale = opened ? 1 : 1;
   bookWrap.style.transform = `translate(-50%, -50%) scale(${scale})`;
 }
 window.addEventListener("load", centerBook);
@@ -380,9 +384,10 @@ function openBook() {
     p.style.zIndex = i + 1;
   });
 
-  // centralizar o livro considerando a página que virou
-  const pageWidth = coverFront.offsetWidth; // largura da capa
-  bookWrap.style.transform = `translate(calc(-50% + ${pageWidth / 2}px), -50%)`;
+  const pageWidth = coverFront.offsetWidth;
+  requestAnimationFrame(() => {
+    bookWrap.style.transform = `translate(calc(-50% + ${pageWidth / 2}px), -50%)`;
+  });
 }
 
 function flipPage(page) {
@@ -393,7 +398,9 @@ function flipPage(page) {
   page.classList.add("flipped");
   currentPage++;
 
-  page.style.zIndex = coverFront.style.zIndex + 1;
+  // Atualiza z-index de forma otimizada
+  const coverZ = parseInt(coverFront.style.zIndex, 10) || (pages.length + 2);
+  page.style.zIndex = coverZ + 1;
 
   pages.forEach((p, i) => {
     if (!p.classList.contains("flipped")) {
@@ -422,13 +429,16 @@ function closeBook() {
     opened = false;
     currentPage = 0;
 
-    bookWrap.style.transform = `translate(-50%, -50%) scale(1)`;
+    requestAnimationFrame(() => {
+      bookWrap.style.transform = `translate(-50%, -50%) scale(1)`;
+    });
   }, pages.length * 50 + 300);
 }
 
 coverFront.addEventListener("click", openBook);
 pages.forEach((p) => p.addEventListener("click", () => flipPage(p)));
 coverBack.addEventListener("click", closeBook);
+
 
 const bgm = document.getElementById("bgm");
 let started = false;
