@@ -2372,6 +2372,6 @@ html, body {
 
 @media (max-width: 768px) {
     body, h1, h2, h3, h4, h5, h6, p, button, a, .text-block.left, .text-block.right {
-        font-family: 'Patrick Hand', cursive !important;
+        font-family: 'Patrick Hand' !important;
     }
 }
