@@ -1337,14 +1337,12 @@ body,
      transform-origin: 100px 100px;
      animation: spin 3s linear infinite;
 }
-/* Cataventos - Responsividade corrigida */
- @media (max-width: 980px) {
+
+@media (max-width: 980px) {
      .pinwheel-container-ace, .pinwheel-container-brun, .pinwheel-container-berg {
          width: 120px;
-        /* só reduz visual, não altera origin */
          height: 180px;
     }
-    /* manter transform-origin no centro visual */
      .pinwheel-rotate-ace, .pinwheel-rotate-brun, .pinwheel-rotate-berg {
          transform-origin: 100px 100px;
     }
@@ -2147,14 +2145,13 @@ body,
 }
  @media (max-width: 768px) {
   .grass-area {
-    height: 28vh; /* um pouco mais de área = menos esticado */
+    height: 28vh;
   }
 
   #grassSVG {
     width: 100%;
     height: 100%;
 
-    /* melhora renderização do SVG no mobile */
     shape-rendering: geometricPrecision;
     image-rendering: auto;
   }
@@ -2162,7 +2159,7 @@ body,
 
 @media (max-width: 400px) {
   .grass-area {
-    height: 22vh; /* mantém proporção mais natural */
+    height: 22vh;
     width: 150vh;
   }
 
@@ -2206,7 +2203,6 @@ body,
   }
 }
 
-/* ===== LOADING ESTÉTICO ===== */
 #preload {
   position: fixed;
   inset: 0;
@@ -2223,7 +2219,6 @@ body,
   z-index: 99999;
 }
 
-/* Conteúdo central */
 .loader {
   text-align: center;
   font-size: 0.95rem;
@@ -2236,14 +2231,12 @@ body,
   gap: 12px;
 }
 
-/* GIF central (parado) */
 .loader-gif {
   width: 150px;
   height: 140px;
   object-fit: contain;
 }
 
-/* Texto principal */
 .loader-text p {
   margin: 0;
   color: #fff;
@@ -2252,7 +2245,6 @@ body,
   letter-spacing: 1px;
 }
 
-/* Subtítulo / legenda */
 .loader-sub {
   font-size: 0.65rem;
   color: rgba(255, 255, 255, 0.6);
@@ -2260,7 +2252,6 @@ body,
   animation: pulse 1.5s ease-in-out infinite alternate;
 }
 
-/* ===== ANIMAÇÕES ===== */
 @keyframes pulse {
   from { opacity: 0.5; transform: scale(0.95); }
   to { opacity: 1; transform: scale(1.05); }
@@ -2271,7 +2262,6 @@ body,
   to { opacity: 1; }
 }
 
-/* Bloqueio durante loading */
 html.loading {
   overflow: hidden;
   touch-action: none;
@@ -2281,7 +2271,6 @@ html.loading * {
   pointer-events: none;
 }
 
-/* Bloqueio total e ajuste de tela */
 html, body {
   width: 100%;
   height: 100%;
@@ -2308,7 +2297,6 @@ html, body {
   }
 }
 
-/* Botão só para mobile */
 #mobile-audio-btn {
   position: fixed;
   bottom: 1%;
@@ -2336,7 +2324,6 @@ html, body {
   transform: translateX(-50%) scale(0.95);
 }
 
-/* Esconde no PC */
 @media (min-width: 769px) {
   #mobile-audio-btn {
     display: none;
@@ -2344,8 +2331,8 @@ html, body {
 }
 
 * {
-    outline: none; /* remove a borda de foco */
-    -webkit-tap-highlight-color: transparent; /* remove o quadrado azul no mobile */
+    outline: none;
+    -webkit-tap-highlight-color: transparent;
 }
 
 @media (max-width: 768px) {
